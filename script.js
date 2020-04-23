@@ -6,6 +6,7 @@ var lowercaseLettersArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "
 var numbersArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialCharactersArray = ["!", "#", "$", "%", "&", "(", ")", "*", "+", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@"];
 
+
 // Write password to the #password input
 function userPassCriteria(){
   var passwordLength = prompt("How many characters would you like your password to be? Choose between 8 and 128");
@@ -14,13 +15,13 @@ function userPassCriteria(){
   var passNumbers = confirm("Would you like to use Numbers?");
   var passSpecialChar = confirm("Would you like to use Special Characters?");
   
-  
+  // This is the object where all my Password Criteria is stored
   var userCriteriaObj = {
-    passwordLength: passwordLength,
-    passUpperCase: passUpperCase,
-    passLowerCase: passLowerCase,
-    passNumbers: passNumbers,
-    passSpecialChar: passSpecialChar,
+    passwordLength,
+    passUpperCase,
+    passLowerCase,
+    passNumbers,
+    passSpecialChar
   }
   
   return userCriteriaObj; 
@@ -46,19 +47,24 @@ function generatePassword() {
       passGenArray = passGenArray.concat(specialCharactersArray);
 
     }
-    for (var i = 0; i < passwordLength; i++) {
-      var letter = passGenArray[Math.floor(Math.random() * passGenArray.length)];
-      var myPassword = myPassword + randomCharacter;
-      //write the logic on each loop to pick on random character from passGenArray array.
-      //push this random character into (something)
+
+    var password = "";
+
+    for (var i = 0; i < userCriteria.passwordLength; i++) {
+      var randomChar = passGenArray[Math.floor(Math.random() * passGenArray.length)];
+
+      password = password + randomChar;
+      
     }
 
-    // return to something
-
-    // reset stats (maybe?)
     
-  }
+    return password;
+    
+}
 
+// Add IF statement if user does not choose any choice
+// Add another IF statement if they do not choose a number between 8 and 128 < 8 > 128
+// Reset the passGenArray before/after each use
 
 function writePassword() {
   var password = generatePassword();
