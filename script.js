@@ -10,10 +10,26 @@ var specialCharactersArray = ["!", "#", "$", "%", "&", "(", ")", "*", "+", "-", 
 // Write password to the #password input
 function userPassCriteria(){
   var passwordLength = prompt("How many characters would you like your password to be? Choose between 8 and 128");
+
+// If user does not enter a value in Password Length prompt they will see this alert
+  if (!passwordLength) {
+    alert("This needs a value");
+
+  } 
+  
+  else if (passwordLength < 8 || passwordLength > 128) {
+  passwordLength = prompt("You must choose between 8 and 128");
+
+  }
+  
+
+  else {
   var passUpperCase = confirm("Would you like to use Uppercase?");
   var passLowerCase = confirm("Would you like to use Lowercase?");
   var passNumbers = confirm("Would you like to use Numbers?");
   var passSpecialChar = confirm("Would you like to use Special Characters?");
+  }
+  
   
   // This is the object where all my Password Criteria is stored
   var userCriteriaObj = {
@@ -25,8 +41,8 @@ function userPassCriteria(){
   }
   
   return userCriteriaObj; 
-
-  }
+  
+}
 
 function generatePassword() {
   var userCriteria = userPassCriteria();
