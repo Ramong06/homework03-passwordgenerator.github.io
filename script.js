@@ -5,23 +5,28 @@ var uppercaseLettersArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "
 var lowercaseLettersArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var numbersArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialCharactersArray = ["!", "#", "$", "%", "&", "(", ")", "*", "+", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@"];
-
+var counter = 0
 
 // Write password to the #password input
 function userPassCriteria(){
+  if (counter === 5) {
+    alert("You have made too many attempts. You must now refresh the page.");
+    window.location.reload()
+  }
   var passwordLength = prompt("How many characters would you like your password to be? Choose between 8 and 128");
 
 // If user does not enter a value in Password Length prompt they will see this alert
   if (!passwordLength) {
     alert("This needs a value");
-
+    counter++;
+    userPassCriteria()
   } 
   
   else if (passwordLength < 8 || passwordLength > 128) {
-  passwordLength = prompt("You must choose between 8 and 128");
-
+  passwordLength = alert("You must choose between 8 and 128");
+  counter++;
+  userPassCriteria()
   }
-  
 
   else {
   var passUpperCase = confirm("Would you like to use Uppercase?");
