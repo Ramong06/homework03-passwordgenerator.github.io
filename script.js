@@ -64,7 +64,7 @@ function generatePassword() {
       passGenArray = passGenArray.concat(numbersArray);
 
     }
-    if (userCriteria.SpecChar) {
+    if (userCriteria.passSpecialChar) {
       passGenArray = passGenArray.concat(specialCharactersArray);
 
     }
@@ -83,9 +83,7 @@ function generatePassword() {
     
 }
 
-// Add IF statement if user does not choose any choice
-// Add another IF statement if they do not choose a number between 8 and 128 < 8 > 128
-// Reset the passGenArray before/after each use
+// Reset the passGenArray before/after each use???
 
 function writePassword() {
   var password = generatePassword();
