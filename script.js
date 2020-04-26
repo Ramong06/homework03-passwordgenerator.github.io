@@ -1,4 +1,4 @@
-// Assignment Code
+// Assigned Variables
 var generateBtn = document.querySelector("#generate");
 var passGenArray = [];
 var uppercaseLettersArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
@@ -52,6 +52,14 @@ function userPassCriteria(){
 function generatePassword() {
   var userCriteria = userPassCriteria();
 
+    if (!userCriteria.passUpperCase && !userCriteria.passLowerCase && !userCriteria.passNumbers && !userCriteria.passSpecialChar) {
+      alert("You must choose at least one character type.");
+      counter++;
+      generatePassword();
+   }
+
+     var password = "";
+
     if (userCriteria.passUpperCase) {
       passGenArray = passGenArray.concat(uppercaseLettersArray);
       
@@ -68,14 +76,6 @@ function generatePassword() {
       passGenArray = passGenArray.concat(specialCharactersArray);
 
     }
-
-    if (!userCriteria.passUpperCase && !userCriteria.passLowerCase && !userCriteria.passNumbers && !userCriteria.passSpecialChar) {
-      alert("You must choose at least one character type.");
-      counter++;
-      userPassCriteria()
-    }
-
-    var password = "";
 
     for (var i = 0; i < userCriteria.passwordLength; i++) {
       var randomChar = passGenArray[Math.floor(Math.random() * passGenArray.length)];
