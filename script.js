@@ -35,7 +35,6 @@ function userPassCriteria(){
   var passSpecialChar = confirm("Would you like to use Special Characters?");
   }
   
-  
   // This is the object where all my Password Criteria is stored
   var userCriteriaObj = {
     passwordLength,
@@ -70,6 +69,12 @@ function generatePassword() {
 
     }
 
+    if (!userCriteria.passUpperCase && !userCriteria.passLowerCase && !userCriteria.passNumbers && !userCriteria.passSpecialChar) {
+      alert("You must choose at least one character type.");
+      counter++;
+      userPassCriteria()
+    }
+
     var password = "";
 
     for (var i = 0; i < userCriteria.passwordLength; i++) {
@@ -79,7 +84,6 @@ function generatePassword() {
       
     }
 
-    
     return password;
     
 }
