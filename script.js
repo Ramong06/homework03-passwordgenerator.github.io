@@ -23,7 +23,7 @@ function userPassCriteria(){
   } 
   
   else if (passwordLength < 8 || passwordLength > 128) {
-  passwordLength = alert("You must choose between 8 and 128");
+  passwordLength = alert("You must choose a value between 8 and 128");
   counter++;
   userPassCriteria()
   }
@@ -49,6 +49,7 @@ function userPassCriteria(){
   
 }
 
+// this should enter the criteria into the generated password
 function generatePassword() {
   var userCriteria = userPassCriteria();
 
@@ -83,8 +84,7 @@ function generatePassword() {
     
 }
 
-// Reset the passGenArray before/after each use???
-
+// This should write the generated password in the text box.
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
