@@ -11,7 +11,7 @@ var counter = 0
 function userPassCriteria(){
   if (counter === 5) {
     alert("You have made too many attempts. You must now refresh the page.");
-    window.location.reload()
+    window.AbortController.apply()
   }
   var passwordLength = prompt("How many characters would you like your password to be? Choose between 8 and 128");
 
